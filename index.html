@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Jarvis IntelliBot</title>
+</head>
+<body>
+    <div class="container">
+        <br>
+   <div id="div">
+
+   </div>
+    </div>
+    <div class="menu">
+            <div class="back"><i class="fa fa-chevron-left"></i> <img src="https://i.redd.it/tr6fr1bhylo01.jpg" draggable="false"/></div>
+            <div class="name">Jarvis</div>
+            <div class="last">Active now</div>
+        </div>
+    <ol class="chat">
+   
+    </ol>
+    <input class="textarea" type="text" placeholder="Type here!"/><div class="emojis"></div>
+</body>
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=T4nAVy4g"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous">
+  </script>
+  <script src="/socket.io.js"></script>
+<script>
+$(function () {
+     var socket = io('/');
+     socket.on('connect', function() { });
+     socket.on('response', function(data) {
+         console.log(data);
+          responsiveVoice.speak(data);
+          var hh = new Date().getHours();
+          var mm = new Date().getMinutes();
+         $(".chat").append(`<li class="other">
+        <div class="avatar"><img src="https://i.redd.it/tr6fr1bhylo01.jpg" draggable="false"/></div>
+      <div class="msg">
+        <p>${data}</p>
+        <time>${hh}:${mm}</time>
+      </div>
+    </li>`)
+     })
+  var recognition = new webkitSpeechRecognition();
+  var recognizedText = null;
+  recognition.continuous = true;
+  //recognition.interimResults = true;
+  recognition.onstart = function() {
+    recognizedText = null;
+  };
+  recognition.onresult = function(ev) {
+    recognizedText = ev["results"][ev.results.length - 1][0]["transcript"];
+    console.log(recognizedText);
+    var gimmeDistance = ["give me distance", "what is the distance", "i need the distance", "distance"];
+    var stop = ["stop"];
+    recognizedText = recognizedText.trim();
+    if(stop.includes(recognizedText)) {
+      stopGivingDistance();
+    }
+    else if(gimmeDistance.includes(recognizedText)) {
+        getDistance();
+    }
+    socket.emit('send', recognizedText);
+     var hh = new Date().getHours();
+          var mm = new Date().getMinutes();
+         $(".chat").append(`<li class="self">
+        <div class="avatar"><img src="" draggable="false"/></div>
+      <div class="msg">
+        <p>${recognizedText}</p>
+        <time>${hh}:${mm}</time>
+      </div>
+    </li>`)
+      recognizedText = null;
+  };
+  recognition.onstop = function() {
+      recognizedText = null;
+  }
+     
+    $("#in").on("keydown", (e) => {
+        if(e.keyCode == 13) {
+              socket.emit('send', $("#in").val());
+        }
+    });
+    recognition.start();
+    var keepGivingData = true;
+    function stopGivingDistance() {
+      keepGivingData = false;
+      //$(".chat").append(``);
+    }
+    function getDistance() {
+       
+        responsiveVoice.speak('Getting the data');
+            keepGivingData = true;
+            setInterval(function() {
+              if(keepGivingData) {
+                socket.emit('gimme_distance');
+              } 
+            },5000)
+        
+        var i = 0;
+        socket.on('distance', function(data) {
+            console.log(data);
+           // data.map((a, b) => {
+            var hh = new Date().getHours();
+          var mm = new Date().getMinutes();
+          var a = data[data.length - 1];
+            $(".chat").append(`<li class="other">
+        <div class="avatar"><img src="https://i.redd.it/tr6fr1bhylo01.jpg" draggable="false"/></div>
+      <div class="msg">
+        <p>${a.cm}</p>
+        <time>${hh}:${mm}</time>
+      </div>
+    </li>`);
+             // })
+              
+              
+                     responsiveVoice.speak(`${data[data.length - 1].cm} cm`);
+              
+                
+
+        })
+    }
+});
+
+</script>
+</html>

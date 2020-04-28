@@ -1,0 +1,16 @@
+{% block %}
+    {% client %}(what is the|tell me the) (?P<query>.*){% endclient %}
+    {% response %}{% call specific: %query %}{% endresponse %}
+{% endblock %}
+{% block %}
+    {% client %}(Do you know about|who is|tell me about|search wikipedia for) (?P<query>.*){% endclient %}
+    {% response %}{% call whoIs: %query %}{% endresponse %}
+{% endblock %}
+{% block %}
+    {% client %}(search google for|search for|google|duckduckgo|search duckduckgo for) (?P<query>.*){% endclient %}
+    {% response %}{% call duckduckgo: %query %}{% endresponse %}
+{% endblock %}
+{% block %}
+    {% client %}(search google for|search for|google|duckduckgo|search duckduckgo for) (?P<query>.*){% endclient %}
+    {% response %}{% call duckduckgo: %query %}{% endresponse %}
+{% endblock %}
