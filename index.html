@@ -1,5 +1,7 @@
 <html>
 <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 <script>
 var recognition = new webkitSpeechRecognition();
 recognition.continuous = true;
@@ -19,13 +21,30 @@ recognition.start();
 </script>
 </head>
 <body>
-<h1>Speech to text</h1>
-<input id = "bStart" type = "button" value = "Start" onclick = "start();"></input>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Permission:</strong> Make sure you have allowed this website to use your microphone.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="container">
+<ul class="list-group">
+  <div class="mx-auto" style="width: 200px;">
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <h3> &nbsp; &nbsp; &nbsp;G.M.L</h3> 
+</div>
+</ul>
+<p><b>G</b>im<b>m</b>e your <b>L</b>iver</p>
+<input id = "bStart" type = "button" value = "Start" class="btn btn-secondary" onclick = "start();"></input>
 <div id = "output"></div>
+</div>
+</div>
+
 
 </body>
 
+
 <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
   function send() {
