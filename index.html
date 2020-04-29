@@ -11,10 +11,10 @@ recognition.onresult = function(event) {
 console.log(event);
 var output = document.getElementById("output");
 output.innerHTML = "";
-for(var i=0; i<event.results.length; i++){
-output.innerHTML = event.results[i][0].transcript;
+//for(var i=0; i<event.results.length; i++){
+output.innerHTML = event.results[event.results.length - 1][0].transcript;
 send();
-}
+//}
 }
 recognition.start();
 }
