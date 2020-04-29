@@ -8,12 +8,13 @@ import subprocess
 import datetime
 
 warnings.filterwarnings("ignore")
-from flask import Flask
+from flask import Flask, send_from_directory
+
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-  return "Welcome home"
+  return send_from_directory('.', 'index.html')
 
 @app.route('/speak/<msg>')
 def hello(msg):
@@ -21,7 +22,7 @@ def hello(msg):
     return "ok"
 
 def speak(msg):
-    subprocess.call(["./simple-google-tts/simple_google_tts", "en", msg], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.call(["./simple-google-tts/simple_google_tts", "en", msg])
 
 def get_time():
     return time.strftime('%l:%M')
@@ -100,4 +101,4 @@ def who_is(query, session_id="general"):
 
 chat = MyChat(os.path.join(os.path.dirname(os.path.abspath(__file__)), "bot.template"))
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0")
