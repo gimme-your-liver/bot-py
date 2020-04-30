@@ -20,7 +20,7 @@ recognition.start();
 }
 </script>
 </head>
-<body>
+<body class="background">
 <div class="alert alert-primary alert-dismissible fade show" role="alert">
   <strong>Permission:</strong> Make sure you have allowed this website to use your microphone.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -32,15 +32,24 @@ recognition.start();
   <div class="p-3 mb-2 bg-primary text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>G.M.L</b></div>
 </ul>
 <p class="mx-auto" style="width: 200px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>G</b>im<b>m</b>e your <b>L</b>iver</p>
-<input id = "bStart" type = "button" value = "Start" class="btn btn-secondary" onclick = "start(); "></input>
+<input id = "bStart" type = "button" value = "Start" class="btn btn-primary" onclick = "start(); "></input>
 <div id = "output" class=""></div>
+
+<div class="spinner-border m-5" id="loader" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
 </div>
 </div>
 <style type="text/css">
+  #loader {
+    display: none;
+  }
   .output {
       border: 2px #000;
       padding: 10px;
-
+  }
+  .background {
+    background-image: url('bot.jpg');
   }
 </style>
 
@@ -53,10 +62,14 @@ recognition.start();
 
 <script type="text/javascript">
   function send() {
+    $("#loader")[0].style.display = 'inherit';
   $.ajax({
     method: "GET",
     url: '/speak/'+document.getElementById("output").innerHTML
+  }).done(function () {
+    $("#loader")[0].style.display = 'none';
   })
   }
+  
 </script>
 </html>
