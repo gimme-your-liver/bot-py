@@ -21,24 +21,91 @@ recognition.start();
 }
 </script>
 </head>
-<body class="background">
-<div class="alert alert-primary alert-dismissible fade show" role="alert">
+<body>
+  <nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">
+      <img src="https://avatars2.githubusercontent.com/u/62700038?s=200&v=4" width="30" height="30" class="d-inline-block align-top" alt="">
+      Gimme Your Liver
+    </a>
+  </nav>
+<div class="alert alert-secondary alert-dismissible fade show" role="alert">
   <strong>Permission:</strong> Make sure you have allowed this website to use your microphone.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="container">
-<ul class="list-group">
-  <div class="p-3 mb-2 bg-primary text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Orange</b></div>
-</ul>
-<p class="mx-auto" style="width: 200px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>G</b>im<b>m</b>e your <b>L</b>iver</p>
-<input id = "bStart" type = "button" value = "Start" class="btn btn-primary" onclick = "start(); "></input>
-<div id = "output" class=""></div>
+<style>
+  .alert {
+    margin-bottom: 0;
+  }
+.waves {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  margin-bottom: -7px; /*Fix for safari gap*/
+  min-height: 100px;
+  max-height: 150px;
+}
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+.section p {
+  line-height: 1.8;
+}
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+.wave-container {
+  background-color: #F74F83;
+  color:#fff;
+}
+.section {
+ padding-top: 4%;
+ padding-bottom: 4%;
+ color: white!important;
+}
+.section-title h2 {
+ font-size: 60px;
+ font-weight: 600;
+ line-height: 1.2;
+}
+/*Shrinking for mobile*/
+@media (max-width: 768px) {
+.waves {
+  height: 40px;
+  min-height: 40px;
+}
+.content {
+  height: 30vh;
+}
+h1 {
+  font-size: 24px;
+}
+}
+</style>
 
-<div class="spinner-border m-5" id="loader" role="status">
-  <span class="sr-only">Loading...</span>
-</div>
 </div>
 </div>
 <style type="text/css">
@@ -46,15 +113,158 @@ recognition.start();
     display: none;
   }
   .output {
-      border: 2px #000;
+      border: 2px rgb(24, 28, 230);
       padding: 10px;
   }
-  .background {
-    background-image: url('bot.jpg');
+  #wave {
+    background-image: url(banner.svg);
+    background-position: center bottom;
+    background-size: 1440px 126px;
+    background-repeat: repeat-x;
+}
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
   }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+  
 </style>
+<div style="background-color: #007bff;color:#fff;">
+  <div class="container">
+    <br>
+    <h1>Say something...</h1><br>
+    <button class="btn btn-success form-control" onclick="start()">Start</button>
+    <br>
+    <div class="spinner-border m-5 mx-auto" id="loader" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <br>
+    <div>
+      <h2 id="output"></h2>
+    </div>
+  </div>
+<svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+  <defs>
+    <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+  </defs>
+  <g class="wave1">
+    <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+  </g>
+  <g class="wave2">
+    <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+  </g>
+  <g class="wave3">
+    <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+  </g>
+</svg>
+</div>
+<style>
+  @-webkit-keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
 
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
 
+.hero-waves {
+  display: block;
+  margin-top: 60px;
+  width: 100%;
+  height: 60px;
+  z-index: 5;
+  position: relative;
+  background-color: #007bff;
+}
+
+.wave1 use {
+  -webkit-animation: move-forever1 10s linear infinite;
+  animation: move-forever1 10s linear infinite;
+  -webkit-animation-delay: -2s;
+  animation-delay: -2s;
+}
+
+.wave2 use {
+  -webkit-animation: move-forever2 8s linear infinite;
+  animation: move-forever2 8s linear infinite;
+  -webkit-animation-delay: -2s;
+  animation-delay: -2s;
+}
+
+.wave3 use {
+  -webkit-animation: move-forever3 6s linear infinite;
+  animation: move-forever3 6s linear infinite;
+  -webkit-animation-delay: -2s;
+  animation-delay: -2s;
+}
+
+@-webkit-keyframes move-forever1 {
+  0% {
+    transform: translate(85px, 0%);
+  }
+  100% {
+    transform: translate(-90px, 0%);
+  }
+}
+
+@keyframes move-forever1 {
+  0% {
+    transform: translate(85px, 0%);
+  }
+  100% {
+    transform: translate(-90px, 0%);
+  }
+}
+
+@-webkit-keyframes move-forever2 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@keyframes move-forever2 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@-webkit-keyframes move-forever3 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@keyframes move-forever3 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+  100% {
+    transform: translate(85px, 0%);
+  }
+
+</style>
 </body>
 
 
