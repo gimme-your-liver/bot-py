@@ -16,22 +16,19 @@ body {
     font-family: 'Acme';font-size: 22px;
 }
 </style>
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark fixed-top">
-	<a class="navbar-brand" href="#">
-    <img src="https://avatars2.githubusercontent.com/u/62700038?s=200&v=4" alt="Logo" style="width:40px;">
-  </a>
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Gimme Your Liver</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Features</a>
-    </li>
-  </ul>
-</nav>
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-primary p-4">
+      <h4 class="text-white">Collapsed content</h4>
+      <span class="text-link">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
 <style>
 .waves {
   position: relative;
@@ -255,15 +252,38 @@ h1 {
     transform: translate(85px, 0%);
   }
 }
-
+.shit{
+  border-radius: 10px; 
+}
 </style>
 
 <br>
 <br>
-<div class="container">
+<div class="container p-3 my-3 bg-primary text-white shit">
 <h2>About The Bot</h2>
+<p>Just a really Simple Chatbot. Ask Anything such as "What is the time?", "Who is Sundar Pichai?" And it gives you the output by saying it.</p>
 </div>
 
+<br>
+<div class="container p-3 my-3 bg-primary text-white shit">
+<h2 style="float: right;">Features</h2><br><br>
+<p>Just a really Simple Chatbot. Ask Anything such as "What is the time?", "Who is Sundar Pichai?" And it gives you the output by saying it.</p>
+</div>
 
+<br>
+<div class="container p-3 my-3 bg-primary text-white shit">
+<h2>Quick and Fast</h2>
+<p>Just a really Simple Chatbot. Ask Anything such as "What is the time?", "Who is Sundar Pichai?" And it gives you the output by saying it.</p>
+</div>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script type="text/javascript">
+  ScrollReveal().reveal('.shit', {
+    delay: 500,
+    distance: '20px',
+    duration: 300,
+    reset: true,
+    origin: 'left'
+  });
+</script>
 </body>
 </html>
