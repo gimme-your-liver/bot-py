@@ -15,6 +15,10 @@ app = Flask(__name__)
 @app.route('/')
 def home():
 
+@app.route('/main')
+def botPage():
+  return send_from_directory('.', 'main.html')
+
 @app.route('/speak/<msg>')
 def hello(msg):
     chat.converse(msg)
