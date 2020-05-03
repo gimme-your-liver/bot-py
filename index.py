@@ -6,23 +6,16 @@ import time
 import warnings
 import subprocess
 import datetime
+import sys
+
+if len(sys.argv) < 2:
+    print('You need to specify the path to be listed')
+    sys.exit()
+
+input = sys.argv[1]
+print(input)
 
 warnings.filterwarnings("ignore")
-from flask import Flask, send_from_directory
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-
-@app.route('/main')
-def botPage():
-  return send_from_directory('.', 'main.html')
-
-@app.route('/speak/<msg>')
-def hello(msg):
-    chat.converse(msg)
-    return "ok"
 
 def speak(msg):
     subprocess.call(["./simple-google-tts/simple_google_tts", "en", msg])
@@ -103,5 +96,4 @@ def who_is(query, session_id="general"):
     return "I don't know about "+query
 
 chat = MyChat(os.path.join(os.path.dirname(os.path.abspath(__file__)), "bot.template"))
-if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+chat.converse(input)
