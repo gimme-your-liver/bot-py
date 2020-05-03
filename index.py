@@ -7,6 +7,8 @@ import warnings
 import subprocess
 import datetime
 import sys
+from googletrans import Translator
+translator = Translator()
 
 if len(sys.argv) < 2:
     print('You need to specify the path to be listed')
@@ -46,7 +48,10 @@ class MyChat(Chat):
         if first_question:
             self.conversation[session_id].append(first_question)
             message = self.respond(first_question, session_id=session_id)
-            speak(message)
+            x = translator.translate(message, dest='hi')
+            print(x.text)
+            speak(x.text)
+
         """ Only for command-line usage
         input_sentence = ""
         while input_sentence != quit:
