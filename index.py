@@ -87,6 +87,7 @@ def spec(query, session_id="general"):
         "day": get_day()
     }
     return specification.get(query, "I have no idea.")
+    
 
 @register_call("whoIs")
 def who_is(query, session_id="general"):
