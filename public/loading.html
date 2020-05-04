@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <title>Loading...</title>
+  </head>
+  <style>
+  .ml4 {
+    position: relative;
+    font-weight: 900;
+    font-size: 4.5em;
+  }
+  .ml4 .letters {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0.3em;
+    right: 0;
+    opacity: 0;
+  }
+  html, body {
+    background-color: #0F79F9;
+    color: #fff;
+    text-align: center
+  }
+  body {
+      font-family: 'Acme';font-size: 22px;
+  }
+  </style>
+  <body>
+    <h1 class="ml4">
+      <span class="letters letters-1">Ready</span>
+      <span class="letters letters-2">Set</span>
+      <span class="letters letters-3">Gimme your liver!</span>
+    </h1>
+    <link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script>
+      var ml4 = {};
+      ml4.opacityIn = [0,1];
+      ml4.scaleIn = [0.2, 1];
+      ml4.scaleOut = 3;
+      ml4.durationIn = 800;
+      ml4.durationOut = 600;
+      ml4.delay = 500;
+
+      anime.timeline({loop: true})
+        .add({
+          targets: '.ml4 .letters-1',
+          opacity: ml4.opacityIn,
+          scale: ml4.scaleIn,
+          duration: ml4.durationIn
+        }).add({
+          targets: '.ml4 .letters-1',
+          opacity: 0,
+          scale: ml4.scaleOut,
+          duration: ml4.durationOut,
+          easing: "easeInExpo",
+          delay: ml4.delay
+        }).add({
+          targets: '.ml4 .letters-2',
+          opacity: ml4.opacityIn,
+          scale: ml4.scaleIn,
+          duration: ml4.durationIn
+        }).add({
+          targets: '.ml4 .letters-2',
+          opacity: 0,
+          scale: ml4.scaleOut,
+          duration: ml4.durationOut,
+          easing: "easeInExpo",
+          delay: ml4.delay
+        }).add({
+          targets: '.ml4 .letters-3',
+          opacity: ml4.opacityIn,
+          scale: ml4.scaleIn,
+          duration: ml4.durationIn
+        }).add({
+          targets: '.ml4 .letters-3',
+          opacity: 0,
+          scale: ml4.scaleOut,
+          duration: ml4.durationOut,
+          easing: "easeInExpo",
+          delay: ml4.delay
+        }).add({
+          targets: '.ml4',
+          opacity: 0,
+          duration: 500,
+          delay: 500
+        });
+        setTimeout(function () {
+          window.location.href = '/welcome'
+        }, 5000)
+    </script>
+  </body>
+</html>
