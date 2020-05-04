@@ -17,8 +17,15 @@ function send() {
   $("#loader")[0].style.display = 'inherit';
   $.ajax({
     method: "GET",
-    url: '/speak/'+document.getElementById("output").innerHTML
+    url: '/speak/'+document.getElementById("output").innerHTML+'/'+window.lang
   }).done(function () {
     $("#loader")[0].style.display = 'none';
   })
+}
+window.lang = "en"
+function eng() {
+	window.lang = "en";
+}
+function hin() {
+	window.lang = "hi"
 }
