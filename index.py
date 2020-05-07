@@ -78,6 +78,10 @@ def google_it(q, session_id="general"):
     else:
         return "No results found"
 
+@register_call("liver")
+def spe(query, session_id="general"):
+    return: ('ok here you go')
+    
 @register_call("specific")
 def spec(query, session_id="general"):
     query = query.strip()
@@ -87,7 +91,7 @@ def spec(query, session_id="general"):
         "day": get_day()
     }
     return specification.get(query, "I have no idea.")
-    
+
 
 @register_call("whoIs")
 def who_is(query, session_id="general"):
