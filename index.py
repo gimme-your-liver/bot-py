@@ -80,7 +80,7 @@ def google_it(q, session_id="general"):
 
 @register_call("liver")
 def spe(query, session_id="general"):
-    return: ('ok here you go')
+    return 'ok here you go'
     
 @register_call("specific")
 def spec(query, session_id="general"):
