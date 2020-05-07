@@ -14,3 +14,7 @@
     {% client %}(search google for|search for|google|duckduckgo|search duckduckgo for) (?P<query>.*){% endclient %}
     {% response %}{% call duckduckgo: %query %}{% endresponse %}
 {% endblock %}
+{% block %}
+    {% client %}(give me your liver|give your liver|gimme your liver|liver please){% endclient %}
+    {% response %}{% call liver %}{% endresponse %}
+{% endblock %}

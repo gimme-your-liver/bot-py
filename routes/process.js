@@ -5,7 +5,7 @@ route.get('/:msg/:lang', (req, res) => {
   var input = req.params.msg;
   var lang = req.params.lang;
   if(lang == "hi") {
-    var heyPy = exec(`python3 index.py ${input}`, function (error, stdout, stderr) {
+    var heyPy = exec(`python3 index.py "${input}"`, function (error, stdout, stderr) {
       if (error) {
         console.log(error.stack);
         console.log('Error code: '+error.code);
@@ -19,7 +19,7 @@ route.get('/:msg/:lang', (req, res) => {
       console.log('Child process exited with exit code '+code);
     });
   } else {
-    var heyPy = exec(`python3 index.en.py ${input}`, function (error, stdout, stderr) {
+    var heyPy = exec(`python3 index.en.py "${input}"`, function (error, stdout, stderr) {
       if (error) {
         console.log(error.stack);
         console.log('Error code: '+error.code);
