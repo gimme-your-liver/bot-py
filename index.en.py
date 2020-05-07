@@ -33,6 +33,10 @@ def get_day():
     today = datetime.date.today()
     return today.strftime("%A")
 
+@register_call("liver")
+def spe(query, session_id="general"):
+    return: ('ok here you go')
+
 class MyChat(Chat):
     def converse(self, first_question=None, quit="quit", session_id="general"):
         """
