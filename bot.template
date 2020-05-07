@@ -15,6 +15,10 @@
     {% response %}{% call duckduckgo: %query %}{% endresponse %}
 {% endblock %}
 {% block %}
-   {% client %}(give me your liver|gimme your liver|apna liver mujhe do|give your liver|liver do) (?P<query>.*){% endclient %}
-   {% response %}{% call liver: %query %}{% endresponse %}
+   {% client %}(give me your liver|gimme your liver|apna liver mujhe do|give your liver|liver do){% endclient %}
+   {% response %}Ok, here you go{% endresponse %}
+{% endblock %}
+{% block %}
+    {% client %}What is your name{% endclient %}
+    {% response %}My name is Gimme your liver{% endresponse %}
 {% endblock %}

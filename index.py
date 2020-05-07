@@ -77,10 +77,6 @@ def google_it(q, session_id="general"):
         return "Here's some results from DuckDuckGo"
     else:
         return "No results found"
-
-@register_call("liver")
-def spe(query, session_id="general"):
-    return 'ok here you go'
     
 @register_call("specific")
 def spec(query, session_id="general"):
